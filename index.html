@@ -332,6 +332,72 @@
     font-size: 14px !important;
   }
 
+  /* ============================ TRUST BAR (Ils nous font confiance) ============================ */
+  .trust-section {
+    padding: 56px 0;
+    background: #FFFFFF;
+    border-top: 1px solid var(--skp-border);
+  }
+  .trust-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--skp-muted);
+    margin: 0 0 36px;
+  }
+  .trust-logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px 28px;
+    align-items: center;
+    justify-items: center;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .trust-logos .trust-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    width: 100%;
+    position: relative;
+  }
+  /* Fallback texte si Clearbit ne charge pas */
+  .trust-logos .trust-logo.logo-fallback::before {
+    content: attr(data-name);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--skp-ink-2);
+    letter-spacing: -0.01em;
+    text-align: center;
+    line-height: 1.15;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+  .trust-logos .trust-logo.logo-fallback:hover::before { opacity: 1; }
+  .trust-logos img {
+    max-height: 44px;
+    max-width: 160px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1) brightness(0.85);
+    opacity: 0.65;
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  }
+  .trust-logos .trust-logo:hover img {
+    filter: grayscale(0) brightness(1);
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  @media (max-width: 760px) {
+    .trust-logos { grid-template-columns: repeat(2, 1fr); gap: 32px 20px; }
+    .trust-section { padding: 44px 0; }
+  }
+
   /* ============================ BELOW-FOLD: WHO WE ARE ============================ */
   .below {
     padding: 64px 0 56px;
@@ -552,6 +618,59 @@
 
       <p class="form-foot">Échange sans engagement — vos données restent confidentielles.</p>
     </aside>
+  </div>
+</section>
+
+<!-- ============================ TRUST BAR · Ils nous font confiance ============================
+     Les logos sont chargés depuis l'API Clearbit Logo (gratuite, fiable).
+     Pour swap avec des fichiers locaux : crée un dossier ./bank-logos/ et remplace
+     chaque `src` par "./bank-logos/credit-agricole.svg" etc.
+     ============================================================================================ -->
+<section class="trust-section">
+  <div class="container">
+    <p class="trust-label">Ils nous font confiance</p>
+    <div class="trust-logos">
+      <div class="trust-logo" data-name="Crédit Agricole">
+        <img src="https://logo.clearbit.com/credit-agricole.fr?size=200"
+             alt="Crédit Agricole" loading="lazy"
+             onerror="this.parentNode.classList.add('logo-fallback');this.remove();" />
+      </div>
+      <div class="trust-logo" data-name="Crédit Mutuel">
+        <img src="https://logo.clearbit.com/creditmutuel.fr?size=200"
+             alt="Crédit Mutuel" loading="lazy"
+             onerror="this.parentNode.classList.add('logo-fallback');this.remove();" />
+      </div>
+      <div class="trust-logo" data-name="Société Générale">
+        <img src="https://logo.clearbit.com/societegenerale.com?size=200"
+             alt="Société Générale" loading="lazy"
+             onerror="this.parentNode.classList.add('logo-fallback');this.remove();" />
+      </div>
+      <div class="trust-logo" data-name="BoursoBank">
+        <img src="https://logo.clearbit.com/boursobank.com?size=200"
+             alt="BoursoBank" loading="lazy"
+             onerror="this.parentNode.classList.add('logo-fallback');this.remove();" />
+      </div>
+      <div class="trust-logo" data-name="La Banque Postale">
+        <img src="https://logo.clearbit.com/labanquepostale.fr?size=200"
+             alt="La Banque Postale" loading="lazy"
+             onerror="this.parentNode.classList.add('logo-fallback');this.remove();" />
+      </div>
+      <div class="trust-logo" data-name="Caisse d'Épargne">
+        <img src="https://logo.clearbit.com/caisse-epargne.fr?size=200"
+             alt="Caisse d'Épargne" loading="lazy"
+             onerror="this.parentNode.classList.add('logo-fallback');this.remove();" />
+      </div>
+      <div class="trust-logo" data-name="Cofidis">
+        <img src="https://logo.clearbit.com/cofidis.fr?size=200"
+             alt="Cofidis" loading="lazy"
+             onerror="this.parentNode.classList.add('logo-fallback');this.remove();" />
+      </div>
+      <div class="trust-logo" data-name="BNP Paribas">
+        <img src="https://logo.clearbit.com/bnpparibas.com?size=200"
+             alt="BNP Paribas" loading="lazy"
+             onerror="this.parentNode.classList.add('logo-fallback');this.remove();" />
+      </div>
+    </div>
   </div>
 </section>
 
